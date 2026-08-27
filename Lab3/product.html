@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Agents Hub</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav h2 span {
+            color: #60a5fa;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* HOME */
+
+        #home {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            background: #1e293b;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* COMMON SECTION */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        section h1 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* ABOUT */
+
+        #about {
+            background: white;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        /* PRODUCTS */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px #ddd;
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product h2 {
+            margin-bottom: 8px;
+        }
+
+        .company {
+            color: #2563eb;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .product p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* CONTACT */
+
+        #contact {
+            background: white;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: auto;
+            background: #f4f6f8;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .contact-box label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .contact-box textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .contact-box button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .contact-box button:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            section {
+                padding: 50px 5%;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <h2>AI<span>Agents</span></h2>
+
+        <div>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HOME -->
+
+    <section id="home">
+
+        <div class="hero">
+
+            <h1>
+                Explore <span>AI Agents</span>
+            </h1>
+
+            <p>
+                Discover the latest AI agents for coding,
+                research, automation, business and productivity.
+            </p>
+
+            <a href="#products" class="btn">
+                Explore Agents
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h1>About AI Agents Hub</h1>
+
+        <div class="about-content">
+
+            <p>
+                AI Agents Hub is a platform designed to help
+                users discover the rapidly growing world of
+                artificial intelligence agents.
+            </p>
+
+            <p>
+                AI agents can understand objectives, reason about
+                tasks, use different tools and perform actions
+                with limited human intervention.
+            </p>
+
+            <p>
+                Our platform brings different types of AI agents
+                together so users can easily explore their
+                capabilities and applications.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section id="products">
+
+        <h1>Latest AI Agents</h1>
+
+        <div class="products">
+
+
+            <!-- CHATGPT -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995"
+                    alt="Artificial Intelligence">
+
+                <div class="product-info">
+
+                    <h2>ChatGPT Agent</h2>
+
+                    <p class="company">
+                        OpenAI
+                    </p>
+
+                    <p>
+                        General-purpose AI agent for research,
+                        browsing and multi-step tasks.
+                    </p>
+
+                    <a
+                        href="https://chatgpt.com/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CODEX -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1555949963-aa79dcee981c"
+                    alt="Coding">
+
+                <div class="product-info">
+
+                    <h2>Codex</h2>
+
+                    <p class="company">
+                        OpenAI
+                    </p>
+
+                    <p>
+                        AI coding agent for programming,
+                        debugging and software development.
+                    </p>
+
+                    <a
+                        href="https://openai.com/codex/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- DEVIN -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4"
+                    alt="Programming">
+
+                <div class="product-info">
+
+                    <h2>Devin</h2>
+
+                    <p class="company">
+                        Cognition
+                    </p>
+
+                    <p>
+                        Autonomous software engineering agent
+                        for development workflows.
+                    </p>
+
+                    <a
+                        href="https://devin.ai/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERPLEXITY -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+                    alt="Research">
+
+                <div class="product-info">
+
+                    <h2>Perplexity</h2>
+
+                    <p class="company">
+                        Perplexity AI
+                    </p>
+
+                    <p>
+                        AI-powered research and search platform
+                        for discovering information.
+                    </p>
+
+                    <a
+                        href="https://www.perplexity.ai/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- GEMINI -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1535378917042-10a22c95931a"
+                    alt="AI Technology">
+
+                <div class="product-info">
+
+                    <h2>Gemini</h2>
+
+                    <p class="company">
+                        Google
+                    </p>
+
+                    <p>
+                        Multimodal AI system for reasoning,
+                        research and productivity.
+                    </p>
+
+                    <a
+                        href="https://gemini.google.com/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLAUDE -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1676299081847-824916de030a"
+                    alt="AI Assistant">
+
+                <div class="product-info">
+
+                    <h2>Claude</h2>
+
+                    <p class="company">
+                        Anthropic
+                    </p>
+
+                    <p>
+                        AI assistant focused on reasoning,
+                        coding, research and computer use.
+                    </p>
+
+                    <a
+                        href="https://claude.ai/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MANUS -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485"
+                    alt="AI Robot">
+
+                <div class="product-info">
+
+                    <h2>Manus</h2>
+
+                    <p class="company">
+                        Manus AI
+                    </p>
+
+                    <p>
+                        General-purpose autonomous AI agent
+                        for completing complex tasks.
+                    </p>
+
+                    <a
+                        href="https://manus.im/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- AGENTFORCE -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72"
+                    alt="Business AI">
+
+                <div class="product-info">
+
+                    <h2>Agentforce</h2>
+
+                    <p class="company">
+                        Salesforce
+                    </p>
+
+                    <p>
+                        Enterprise AI agents for sales,
+                        customer service and business workflows.
+                    </p>
+
+                    <a
+                        href="https://www.salesforce.com/agentforce/"
+                        target="_blank"
+                        class="btn">
+                        Visit
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h1>Contact Us</h1>
+
+        <div class="contact-box">
+
+            <form>
+
+                <label for="name">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required>
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea
+                    id="message"
+                    placeholder="Write your message..."
+                    required></textarea>
+
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            AI Agents Hub © 2026
+        </p>
+
+        <p>
+            Explore the future of Agentic AI.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+```

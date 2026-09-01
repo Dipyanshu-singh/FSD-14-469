@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirTag — Claymorphism</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #e9e6ff;
+            color: #29263d;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+
+            background: #ebe9ff;
+            border-radius: 30px;
+
+            box-shadow:
+                10px 10px 20px rgba(163, 157, 190, 0.45),
+                -10px -10px 20px rgba(255, 255, 255, 0.8);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #45415c;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #7167d9;
+        }
+
+        .nav-btn {
+            padding: 11px 20px;
+            border-radius: 20px;
+            background: #8177e8;
+            color: white !important;
+
+            box-shadow:
+                5px 5px 10px rgba(145, 137, 190, 0.5),
+                -4px -4px 8px rgba(255, 255, 255, 0.7);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 8% 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 20px;
+            background: #d9d5ff;
+
+            box-shadow:
+                inset 4px 4px 8px rgba(166, 160, 195, 0.4),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 9vw, 110px);
+            line-height: 0.9;
+            letter-spacing: -6px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #766bdc;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #69657b;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 16px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #8177e8;
+            color: white;
+
+            box-shadow:
+                8px 8px 15px rgba(137, 129, 181, 0.5),
+                -8px -8px 15px rgba(255, 255, 255, 0.8);
+        }
+
+        .secondary {
+            background: #e9e6ff;
+            color: #5e59a0;
+
+            box-shadow:
+                8px 8px 15px rgba(163, 157, 190, 0.45),
+                -8px -8px 15px rgba(255, 255, 255, 0.8);
+        }
+
+        .button:active {
+            transform: scale(0.96);
+        }
+
+        /* AIRTAG */
+
+        .hero-product {
+            width: 430px;
+            height: 430px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e9e6ff;
+
+            box-shadow:
+                20px 20px 40px rgba(153, 147, 181, 0.5),
+                -20px -20px 40px rgba(255, 255, 255, 0.9);
+        }
+
+        .airtag {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+
+            background: linear-gradient(
+                145deg,
+                #ffffff,
+                #d6d6d6
+            );
+
+            position: relative;
+
+            box-shadow:
+                20px 20px 35px rgba(139, 135, 150, 0.5),
+                -15px -15px 30px rgba(255, 255, 255, 0.9);
+
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .airtag::before {
+            content: "";
+
+            position: absolute;
+
+            width: 105px;
+            height: 105px;
+
+            background: #f4f4f4;
+
+            border-radius: 50%;
+
+            top: 78px;
+            left: 78px;
+
+            box-shadow:
+                inset 7px 7px 12px rgba(180, 180, 180, 0.3),
+                inset -7px -7px 12px white;
+        }
+
+        .airtag::after {
+            content: "";
+
+            position: absolute;
+
+            font-size: 50px;
+            color: #222;
+
+            top: 98px;
+            left: 108px;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-18px) rotate(5deg);
+            }
+        }
+
+        /* FEATURES */
+
+        .features {
+            padding: 120px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-heading h2 {
+            font-size: 55px;
+            letter-spacing: -3px;
+        }
+
+        .section-heading p {
+            margin-top: 15px;
+            color: #77738a;
+            font-size: 18px;
+        }
+
+        .feature-grid {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            min-height: 280px;
+
+            padding: 35px;
+
+            border-radius: 35px;
+
+            background: #e9e6ff;
+
+            box-shadow:
+                12px 12px 25px rgba(159, 153, 185, 0.45),
+                -12px -12px 25px rgba(255, 255, 255, 0.85);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) rotate(1deg);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 23px;
+
+            background: #dcd8ff;
+
+            font-size: 32px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                7px 7px 14px rgba(159, 153, 185, 0.45),
+                -7px -7px 14px rgba(255, 255, 255, 0.8);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #77738a;
+            line-height: 1.6;
+        }
+
+        /* FIND SECTION */
+
+        .find-section {
+            padding: 130px 8%;
+            text-align: center;
+
+            background: #dcd8ff;
+        }
+
+        .find-section h2 {
+            font-size: 60px;
+            letter-spacing: -3px;
+        }
+
+        .find-section p {
+            max-width: 650px;
+            margin: 20px auto;
+            color: #6d6880;
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        .radar {
+            width: 270px;
+            height: 270px;
+
+            margin: 60px auto;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #8177e8 0 5%,
+                    transparent 6% 25%,
+                    #b9b4ee 26% 27%,
+                    transparent 28% 45%,
+                    #b9b4ee 46% 47%,
+                    transparent 48% 65%,
+                    #b9b4ee 66% 67%,
+                    transparent 68%
+                );
+
+            box-shadow:
+                15px 15px 30px rgba(148, 141, 177, 0.45),
+                -15px -15px 30px rgba(255, 255, 255, 0.8);
+
+            position: relative;
+        }
+
+        .radar::after {
+            content: "";
+
+            position: absolute;
+
+            width: 50%;
+            height: 5px;
+
+            background: #8177e8;
+
+            top: 50%;
+            left: 50%;
+
+            transform-origin: left center;
+
+            border-radius: 10px;
+
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* PRICE */
+
+        .buy-section {
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .buy-box {
+            max-width: 650px;
+            margin: auto;
+
+            padding: 60px 40px;
+
+            border-radius: 45px;
+
+            background: #e9e6ff;
+
+            box-shadow:
+                15px 15px 30px rgba(158, 152, 185, 0.5),
+                -15px -15px 30px rgba(255, 255, 255, 0.9);
+        }
+
+        .buy-box h2 {
+            font-size: 55px;
+        }
+
+        .price {
+            font-size: 40px;
+            font-weight: bold;
+            margin: 20px;
+            color: #7167d9;
+        }
+
+        .buy-box p {
+            color: #77738a;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            color: #77738a;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 140px;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .hero-buttons {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-product {
+                width: 320px;
+                height: 320px;
+            }
+
+            .airtag {
+                width: 200px;
+                height: 200px;
+            }
+
+            .airtag::before {
+                width: 80px;
+                height: 80px;
+                top: 60px;
+                left: 60px;
+            }
+
+            .airtag::after {
+                font-size: 38px;
+                top: 78px;
+                left: 83px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2,
+            .find-section h2 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            AirTag
+        </div>
+
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#find">Find</a></li>
+            <li><a href="#buy">Buy</a></li>
+        </ul>
+
+        <a href="#buy" class="nav-btn">
+            Buy
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span class="tag">
+                FIND WHAT MATTERS
+            </span>
+
+            <h1>
+                Never lose<br>
+                <span>anything.</span>
+            </h1>
+
+            <p>
+                AirTag helps you keep track of your everyday
+                essentials. Small enough to carry everywhere,
+                powerful enough to find what's missing.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#buy" class="button primary">
+                    Buy AirTag
+                </a>
+
+                <a href="#features" class="button secondary">
+                    Explore
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-product">
+
+            <div class="airtag"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features" id="features">
+
+        <div class="section-heading">
+
+            <h2>
+                Simple. Smart. Powerful.
+            </h2>
+
+            <p>
+                Everything you need to keep your belongings close.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Precision Finding
+                </h3>
+
+                <p>
+                    Get accurate directions to your AirTag
+                    when it's nearby.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔊
+                </div>
+
+                <h3>
+                    Play a Sound
+                </h3>
+
+                <p>
+                    Make your AirTag play a sound and
+                    quickly locate your belongings.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Find My Network
+                </h3>
+
+                <p>
+                    Locate your item even when it's far
+                    away with the Find My network.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔋
+                </div>
+
+                <h3>
+                    Long Battery
+                </h3>
+
+                <p>
+                    A replaceable battery keeps your
+                    AirTag running for around a year.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💧
+                </div>
+
+                <h3>
+                    Water Resistant
+                </h3>
+
+                <p>
+                    Built to handle everyday accidents,
+                    splashes and spills.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Privacy First
+                </h3>
+
+                <p>
+                    Designed with privacy and security
+                    at the heart of the experience.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FIND -->
+
+    <section class="find-section" id="find">
+
+        <h2>
+            Lost something?
+        </h2>
+
+        <p>
+            Don't panic. AirTag works with the Find My
+            experience to help you locate your belongings.
+        </p>
+
+        <div class="radar"></div>
+
+        <a href="#buy" class="button primary">
+            Get AirTag
+        </a>
+
+    </section>
+
+
+    <!-- BUY -->
+
+    <section class="buy-section" id="buy">
+
+        <div class="buy-box">
+
+            <h2>
+                AirTag
+            </h2>
+
+            <div class="price">
+                ₹3,490
+            </div>
+
+            <p>
+                Small device. Big peace of mind.
+            </p>
+
+            <a href="#" class="button primary">
+                Buy now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            AirTag concept website — made for educational/design purposes.
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 Product Concept
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```

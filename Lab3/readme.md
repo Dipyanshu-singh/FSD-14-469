@@ -14,15 +14,26 @@ npm=node package management
 404 Not found
 500 Internal server Error
 
+# server can set status code:
 
+1. res.statusCode()
+2. res.writehead()
 
 #API
 
 - any api can be of 4 types
-1. get   /read
-2. post     /create
-3. put/patch       /update
-4. delete       /delete
+1. get                  /read
+2. post                 /create
+3. put/patch            /update
+4. delete               /delete
+
+# Routes:
+
+e.g..   /home/products
+        /home/products/385
+        /home/users
+        /home/users/mohan
+
 
 api cna be response by server with any response code of data,
 api generally start with -api/version/
